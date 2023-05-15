@@ -18,5 +18,12 @@
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^23.1.2"
+  },
+  "win": {
+    "requestedExecutionLevel": "requireAdministrator"
+  },
+  "dependencies": {
+    "gh-pages": "^2.0.1",
+    "react-scripts": "^5.0.1"
   }
 }

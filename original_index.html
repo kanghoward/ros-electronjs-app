@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <link href="./styles.css" rel="stylesheet">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self';">
+    <title>Hello World!</title>
+  </head>
+  <script type="text/javascript" src="./eventemitter2.js"></script>
+  <script type="text/javascript" src="./roslib.js"></script>
+
+
+  <body>
+    <h1 id='hello'>Hello World!</h1>
+    We are using Node.js <span id="node-version"></span>,
+    Chromium <span id="chrome-version"></span>,
+    and Electron <span id="electron-version"></span>.
+
+    <div id="slide-container">
+      <input
+          type="range"
+          min="5"
+          max="200"
+          step="5"
+          value="100"
+          class="slider"
+          id="myRange"
+      />
+    </div>
+
+    <h3 id="slider-value">Slider Value:</h3>
+    <!-- You can also require other files to run in this process -->
+    <script src="./renderer.js"></script>
+    <script type="text/javascript" src="./my_ros.js"></script>
+  </body>
+</html>

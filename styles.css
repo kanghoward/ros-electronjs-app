@@ -1,3 +1,55 @@
 /* styles.css */
+* {
+  font-family: "Montserrat", sans-serif;
+    
+}
 
+#app-name {
+  font-size: 60px;
+}
+#company-logo {
+  width: 600;
+}
+#status-bar {
+  font-size: 30px;
+}
+
+.ctr-container {
+  display: flex;
+  justify-content: center; /* Align items horizontally */
+  flex-direction: column;
+  align-items: center; /* Align items vertically */
+}
+
+#video-feed {
+  width: 1280px;
+  height: 960px;
+  margin: 20px;
+}
+
+.btn:hover {
+  opacity: 0.5
+}
+
+.btn {
+
+  padding: 15px;
+  border-radius: 15px;
+  margin: 20px; /* Optional: Add margin between elements */
+  font-family: "Montserrat", sans-serif;
+  font-size: 50px;
+  text-align: center;
+}
+
+#btn-record {
+  background-color: #90EE90;
+}
+
+#btn-screenshot {
+  background-color: #87CEFA;
+}
+
+#btn-light {
+  background-color: #FFFACD;
+}
 /* Add styles here to customize the appearance of your app */

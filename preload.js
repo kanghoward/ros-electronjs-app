@@ -5,6 +5,7 @@
  * 
  * https://www.electronjs.org/docs/latest/tutorial/sandbox
  */
+const {contextBridge, ipcMain, ipcRenderer} = require('electron')
 window.addEventListener('DOMContentLoaded', () => {
   const replaceText = (selector, text) => {
     const element = document.getElementById(selector)

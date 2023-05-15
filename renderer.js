@@ -5,3 +5,11 @@
  * `contextIsolation` is turned on. Use the contextBridge API in `preload.js`
  * to expose Node.js functionality from the main process.
  */
+console.log('Render process');
+
+sliderValue = document.getElementById('slider-value');
+
+document.querySelector('input').addEventListener('input', (evt) => {
+	console.log(evt.target.value);
+	sliderValue.innerText = 'Slider Value:' + evt.target.value;
+});
