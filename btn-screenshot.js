@@ -1,12 +1,9 @@
 //const { spawn, spawnSync } = require("child_process");
 
-var lights = false
-var lightPID
+var screenshotPID
 
-function lightFunc() {
- if (lights == false) {
+function screenshotFunc() {
   const ls = spawn("python", ["lights.py"]);
-  lights = true
   console.log(ls.pid)
   lightPID = ls.pid
   statusElement.innerText = "Status: Lights turned on"

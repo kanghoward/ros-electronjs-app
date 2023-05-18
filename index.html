@@ -20,11 +20,12 @@
       <h1 id="app-name" class="ctr">Reachbots GUI (development v1.0)</h1>
       <img class="ctr" id="video-feed" src="http://0.0.0.0:8080/snapshot?topic=/camera/rgb/image_raw&quality=10">
       <p class="ctr" id="status-bar">Status: No command selected</p>
-      <div class="ctr btn-container">
+      <div class="ctr" id="btn-container">
           <button class="btn" id="btn-record">Start Recording</button>
           <button class="btn" id="btn-light">Toggle Lights</button>
           <button class="btn" id="btn-screenshot">Take Screenshot</button>
       </div>
+      <div class="ctr" id="loader"></div>
     </div>
 <script type="text/javascript" src="./btn-record.js"></script>
 <script type="text/javascript" src="./btn-light.js"></script>

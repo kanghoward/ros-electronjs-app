@@ -12,7 +12,7 @@ function lightFunc() {
   statusElement.innerText = "Status: Lights turned on"
 
   lightElement.style.color = "white"
-  lightElement.style.backgroundColor = "#333333"
+  lightElement.style.backgroundColor = "#333"
   console.log("Lights turned on")
     
   ls.stdout.on("data", data => {
@@ -32,11 +32,11 @@ function lightFunc() {
   });
 
  } else if (lights == true) {
-  const kill = spawn("kill", [PID])
+  const kill = spawn("kill", [lightPID])
   
   statusElement.innerText = "Status: Lights turned off"
   console.log("Lights turned off")
-  lightElement.style.backgroundColor = "#FFFACD"
+  lightElement.style.backgroundColor = "#BBB"
   lightElement.style.color = "black"
   lights = false
   
