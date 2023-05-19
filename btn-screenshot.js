@@ -1,17 +1,20 @@
 //const { spawn, spawnSync } = require("child_process");
 
-var screenshotPID
+const rostopicHz = 1000 * 2 
+var running = false
 
-function screenshotFunc() {
-  const ls = spawn("python", ["lights.py"]);
+function sshotFunc() {
+  if (running == false) {
+    running = true
+     
+  const ls = spawn("rosbag", ["record","-O", "bagfiles/images.bag", "/camera/rgb/image_raw"]);
   console.log(ls.pid)
-  lightPID = ls.pid
-  statusElement.innerText = "Status: Lights turned on"
+  var sshotPID = ls.pid
+  statusElement.innerText = "Status: Screenshot captured, saving..."
+  console.log("Screenshot captured, saving ...")
+  videoElement.classList.add("flash-animation")
 
-  lightElement.style.color = "white"
-  lightElement.style.backgroundColor = "#333333"
-  console.log("Lights turned on")
-    
+
   ls.stdout.on("data", data => {
     console.log(`stdout: ${data}`);
   });
@@ -28,21 +31,21 @@ function screenshotFunc() {
     console.log(`child process exited with code ${code}`);
   });
 
- } else if (lights == true) {
-  const kill = spawn("kill", [PID])
+  }
   
-  statusElement.innerText = "Status: Lights turned off"
-  console.log("Lights turned off")
-  lightElement.style.backgroundColor = "#FFFACD"
-  lightElement.style.color = "black"
-  lights = false
-  
+  setTimeout(function() {
      
- }
+  const kill = spawn("kill", [sshotPID])
+  const bag2img = spawnSync("python", ["./bag_to_img.py", "./bagfiles/images.bag", "./output", "/camera/rgb/image_raw"], {stdio: 'inherit'})
+  videoElement.classList.remove("flash-animation")
+  statusElement.innerText = "Status: Screenshot saved at ~/electron-quick-start/output/"
+  running = false
+  }, 2000)
+
+ 
 }
 
-
-
-const lightElement = document.getElementById("btn-light")
-lightElement.onclick = lightFunc
+const videoElement = document.getElementById("video-feed")
+const sshotElement = document.getElementById("btn-screenshot")
+sshotElement.onclick = sshotFunc
 

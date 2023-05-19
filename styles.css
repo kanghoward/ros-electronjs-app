@@ -19,6 +19,7 @@
   100% { transform: rotate(360deg); }
 }
 
+
 body {
   background-color: #DDD;
 }
@@ -44,6 +45,24 @@ body {
   width: 1280px;
   height: 960px;
   margin: 20px;
+  opacity: 1;
+}
+
+
+#video-feed.flash-animation {
+  animation: flash 0.2s;
+}
+
+@keyframes flash {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .btn:hover {

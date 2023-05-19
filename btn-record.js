@@ -5,31 +5,18 @@ var recordPID
 
 function recordFunc() {
  if (recording == false) {
-  const ls = spawn("rosbag", ["record","-O", "bagfiles/images.bag", "/camera/rgb/image_raw"]);
-  recording = true
-  console.log(ls.pid)
+     const ls = spawn("rosbag", ["record","-O", "bagfiles/images.bag", "/camera/rgb/image_raw"]);
   recordPID = ls.pid
+    ls.on("close", code => {
+      console.log(`child process exited with code ${code}`);
+    });
+  recording = true
   recordElement.innerText = "Stop Recording"
   recordElement.style.backgroundColor = "#EE6347"
   statusElement.innerText = "Status: Recording Started"
-
+  sshotElement.style.display = "none"
   console.log("Recording started (rosbag + images)")
     
-  ls.stdout.on("data", data => {
-    console.log(`stdout: ${data}`);
-  });
-
-  ls.stderr.on("data", data => {
-    console.log(`stderr: ${data}`);
-  });
-
-  ls.on('error', (error) => {
-    console.log(`error: ${error.message}`);
-  });
-
-  ls.on("close", code => {
-    console.log(`child process exited with code ${code}`);
-  });
 
  } else if (recording == true) {
 
@@ -49,11 +36,12 @@ function recordFunc() {
   console.log("RosBag can be found at ~/electron-quick-start/bagfiles/")
   console.log("Video saved at ~/electron-quick-start/output/output.mp4")
   
-  statusElement.innerText = "Status: Recording saved! Path :~/electron-quick-start/output/output.mp4"
+  statusElement.innerText = "Status: Recording saved! Path: ~/electron-quick-start/output/output.mp4"
   recordElement.innerText = "Start Recording"
   recordElement.style.backgroundColor = "#BBB"
      
 
+  sshotElement.style.display = "inline"
   btncontainerElement.style.display = "block"
   loaderElement.style.display = "none"
   }, 500)
